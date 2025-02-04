@@ -1,6 +1,10 @@
 // components/Navbar.tsx
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const Navbar: React.FC = () => {
   return (
@@ -25,6 +29,13 @@ const Navbar: React.FC = () => {
           <Link href="/contact" className="text-white hover:underline">
             Contact
           </Link>
+        </li>
+        <li>
+          <LoginLink>Sign in</LoginLink>
+        </li>
+
+        <li>
+          <RegisterLink>Sign up</RegisterLink>
         </li>
       </ul>
     </nav>
