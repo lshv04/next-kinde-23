@@ -65,6 +65,51 @@ export default async function NavigationBar() {
                 Contact
               </Link>
             </SheetClose>
+            <SheetClose asChild>
+              <div>
+                {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
+                {!isUserAuthenticated && (
+                  <>
+                    <ul className="flex flex-row gap-2">
+                      <li>
+                        <Button variant="outline">
+                          <LoginLink>Sign in</LoginLink>
+                        </Button>
+                      </li>
+                      <li>
+                        <Button variant="outline">
+                          <RegisterLink>Sign up</RegisterLink>
+                        </Button>
+                      </li>
+                    </ul>
+                  </>
+                )}
+
+                {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
+                {isUserAuthenticated && (
+                  <div>
+                    <ul>
+                      <li>
+                        <p>{user.email}</p>
+                      </li>
+                      <li>
+                        <Button variant="destructive">
+                          <LogoutLink className="">Log out</LogoutLink>
+                        </Button>
+                      </li>
+                      <li>
+                        <Link
+                          href="/dashboard"
+                          className="text-black hover:underline"
+                        >
+                          Dashboard
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>
@@ -102,7 +147,7 @@ export default async function NavigationBar() {
           Contact
         </Link>
       </nav>
-      <div>
+      <div >
         {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
         {!isUserAuthenticated && (
           <>
