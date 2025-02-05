@@ -13,6 +13,8 @@ const Navbar: React.FC = async () => {
   const user = await getUser();
   const isUserAuthenticated = await isAuthenticated();
 
+  
+
   return (
     <nav className="bg-blue-600">
       <ul className="container mx-auto flex justify-center items-center py-4 space-x-6">
@@ -51,9 +53,12 @@ const Navbar: React.FC = async () => {
 
         {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
         {isUserAuthenticated && (
-          <li>
-            <LogoutLink>Log out</LogoutLink>
-          </li>
+          <div>
+            <li>{user.email}</li>
+            <li>
+              <LogoutLink>Log out</LogoutLink>
+            </li>
+          </div>
         )}
       </ul>
     </nav>
