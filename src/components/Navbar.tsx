@@ -4,7 +4,9 @@ import React from "react";
 import {
   RegisterLink,
   LoginLink,
+  LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+
 
 const Navbar: React.FC = () => {
   return (
@@ -36,6 +38,9 @@ const Navbar: React.FC = () => {
 
         <li>
           <RegisterLink>Sign up</RegisterLink>
+        </li>
+        <li>
+        <LogoutLink>Log out</LogoutLink>
         </li>
       </ul>
     </nav>
