@@ -72,7 +72,7 @@ export default async function NavigationBar() {
         <MountainIcon className="h-6 w-6 " />
         <span className="sr-only">Acme Inc</span>
       </Link>
-      <nav className=" hidden md:flex mx-auto gap-6 bord">
+      <nav className=" hidden md:flex  justify-center mx-auto gap-6 bord">
         <Link
           href="/"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
@@ -101,43 +101,47 @@ export default async function NavigationBar() {
         >
           Contact
         </Link>
- 
       </nav>
       <div>
-          {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
-          {!isUserAuthenticated && (
-            <>
+        {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
+        {!isUserAuthenticated && (
+          <>
+            <ul className="flex flex-row gap-2">
               <li>
-                <LoginLink>Sign in</LoginLink>
+                <Button variant="outline">
+                  <LoginLink>Sign in</LoginLink>
+                </Button>
               </li>
               <li>
-                <RegisterLink>Sign up</RegisterLink>
+                <Button variant="outline">
+                  <RegisterLink>Sign up</RegisterLink>
+                </Button>
               </li>
-            </>
-          )}
+            </ul>
+          </>
+        )}
 
-          {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
-          {isUserAuthenticated && (
-            <div>
-              <ul>
-                <li>
-                  <p>{user.email}</p>
-                </li>
-                <li>
-                  <LogoutLink className="hover:underline">Log out</LogoutLink>
-                </li>
-                <li>
-                  <Link
-                    href="/dashboard"
-                    className="text-black hover:underline"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+        {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
+        {isUserAuthenticated && (
+          <div>
+            <ul>
+              <li>
+                <p>{user.email}</p>
+              </li>
+              <li>
+                <Button variant="destructive">
+                  <LogoutLink className="">Log out</LogoutLink>
+                </Button>
+              </li>
+              <li>
+                <Link href="/dashboard" className="text-black hover:underline">
+                  Dashboard
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
