@@ -6,9 +6,13 @@ import {
   LoginLink,
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
+const Navbar: React.FC = async () => {
+  const { getUser, isAuthenticated } = getKindeServerSession();
+  const user = await getUser();
+  const isUserAuthenticated = await isAuthenticated();
 
-const Navbar: React.FC = () => {
   return (
     <nav className="bg-blue-600">
       <ul className="container mx-auto flex justify-center items-center py-4 space-x-6">
@@ -32,16 +36,25 @@ const Navbar: React.FC = () => {
             Contact
           </Link>
         </li>
-        <li>
-          <LoginLink>Sign in</LoginLink>
-        </li>
 
-        <li>
-          <RegisterLink>Sign up</RegisterLink>
-        </li>
-        <li>
-        <LogoutLink>Log out</LogoutLink>
-        </li>
+        {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
+        {!isUserAuthenticated && (
+          <>
+            <li>
+              <LoginLink>Sign in</LoginLink>
+            </li>
+            <li>
+              <RegisterLink>Sign up</RegisterLink>
+            </li>
+          </>
+        )}
+
+        {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
+        {isUserAuthenticated && (
+          <li>
+            <LogoutLink>Log out</LogoutLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
