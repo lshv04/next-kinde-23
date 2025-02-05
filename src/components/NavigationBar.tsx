@@ -179,7 +179,7 @@ export default async function NavigationBar() {
                 </Button>
               </li>
               <li>
-                <Link href="/dashboard" className="text-black hover:underline">
+                <Link href="/dashboard" className="text-black hover:underline hidden lg:block">
                   Dashboard
                 </Link>
               </li>
