@@ -29,6 +29,9 @@ export default async function NavigationBar() {
         </SheetTrigger>
         <SheetContent side="left">
           <div className="grid gap-2 py-6 bord">
+            {isUserAuthenticated && (
+              <p className="text-black font-medium">{user.email}</p>
+            )}
             <SheetClose asChild>
               <Link
                 href="/"
@@ -66,6 +69,17 @@ export default async function NavigationBar() {
               </Link>
             </SheetClose>
             <SheetClose asChild>
+              {isUserAuthenticated && (
+                <Link
+                  href="/dashboard"
+                  className="flex w-full items-center py-2 text-lg font-semibold"
+                >
+                  Dashboard
+                </Link>
+              )}
+            </SheetClose>
+
+            <SheetClose asChild>
               <div>
                 {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
                 {!isUserAuthenticated && (
@@ -88,22 +102,12 @@ export default async function NavigationBar() {
                 {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
                 {isUserAuthenticated && (
                   <div>
-                    <ul>
-                      <li>
-                        <p>{user.email}</p>
-                      </li>
+                    <ul className="flex flex-col gap-2">
+                   
                       <li>
                         <Button variant="destructive">
                           <LogoutLink className="">Log out</LogoutLink>
                         </Button>
-                      </li>
-                      <li>
-                        <Link
-                          href="/dashboard"
-                          className="text-black hover:underline"
-                        >
-                          Dashboard
-                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -146,8 +150,16 @@ export default async function NavigationBar() {
         >
           Contact
         </Link>
+        {isUserAuthenticated && (
+          <Link
+            href="/dashboard"
+            className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+          >
+            Dashboard
+          </Link>
+        )}
       </nav>
-      <div >
+      <div className=" ">
         {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
         {!isUserAuthenticated && (
           <>
@@ -168,20 +180,15 @@ export default async function NavigationBar() {
 
         {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
         {isUserAuthenticated && (
-          <div>
-            <ul>
+          <div className="bord ">
+            <ul className="flex flex-col items-center gap-2">
               <li>
-                <p>{user.email}</p>
+                <p className="text-black font-medium">{user.email}</p>
               </li>
               <li>
                 <Button variant="destructive">
                   <LogoutLink className="">Log out</LogoutLink>
                 </Button>
-              </li>
-              <li>
-                <Link href="/dashboard" className="text-black hover:underline hidden lg:block">
-                  Dashboard
-                </Link>
               </li>
             </ul>
           </div>
