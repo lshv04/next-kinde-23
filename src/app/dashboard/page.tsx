@@ -1,4 +1,4 @@
-// pages/contact.tsx
+// pages/dashboard.tsx
 import type { NextPage } from 'next';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 

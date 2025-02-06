@@ -83,7 +83,7 @@ export default async function NavigationBar() {
 
             <SheetClose asChild>
               <div>
-                {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
+                {/* if user is NOT authenticated, show´s login and register button*/}
                 {!isUserAuthenticated && (
                   <>
                     <ul className="flex flex-row gap-2">
@@ -101,7 +101,7 @@ export default async function NavigationBar() {
                   </>
                 )}
 
-                {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
+                {/* If user IS authenticated, shows logout button */}
                 {isUserAuthenticated && (
                   <div>
                     <ul className="flex flex-col gap-2">
@@ -162,7 +162,7 @@ export default async function NavigationBar() {
         )}
       </nav>
       <div className=" ">
-        {/* Se o usuário NÃO estiver autenticado, mostra os links de login e cadastro */}
+        {/*  if user is NOT authenticated, show´s login and register button*/}
         {!isUserAuthenticated && (
           <>
             <ul className="flex flex-row gap-2">
@@ -180,7 +180,7 @@ export default async function NavigationBar() {
           </>
         )}
 
-        {/* Se o usuário ESTIVER autenticado, mostra o link de logout */}
+        {/* If user IS authenticated, shows logout button */}
         {isUserAuthenticated && (
           <div className="bord ">
             <ul className="flex flex-col items-center gap-2">
